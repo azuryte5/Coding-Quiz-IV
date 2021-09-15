@@ -1,9 +1,17 @@
 // GIVEN I am taking a code quiz
 var timer = 108;
+var questionId=0
 var gameStartBtn = document.getElementById('start');
-var answerDisplay = document.getElementById('response')
+var answerDisplay = document.getElementById('response');
 var questionDisplay = document.getElementById("question");
-questionDisplay.textContent="";
+var optionSpot=document.getElementById("options")
+
+var optionEl = document.createElement("button")
+questionArray= [
+    {q: "What is an apple?", a: "fruit", b: "Bread", c: "Toy", d: "Candy"},
+    {q:"What is a carrot?", a:"vegetables"}
+    ]; 
+
 
 // need to practice making a button
 // First you need to tag the id
@@ -15,19 +23,66 @@ buttonLocation.appendChild(wrongButton);
 
 
 var question = function () {
-questionArray= ["What is an apple?", "What is a carrot?"]   
+questionDisplay.textContent="What is an Apple?";
+optionListAEl = document.createElement("li");
+optionListBEl = document.createElement("li");
+optionListCEl = document.createElement("li");
+optionListDEl = document.createElement("li");
+optionListAEl.innerHTML="<button>Fruit</button>";
+optionSpot.appendChild(optionListAEl);
+optionListBEl.innerHTML="<button>Bread</button>";
+optionSpot.appendChild(optionListBEl);
+optionListCEl.innerHTML="<button>Toy</button>";
+optionSpot.appendChild(optionListCEl);
+optionListDEl.innerHTML="<button>Candy</button>";
+optionSpot.appendChild(optionListDEl);
 
-for (var i=0; i >= questionArray.length; i++){
+if (optionListAEl.addEventListener("click", function () {
+    window.alert("You got it correct!")}));
+if (optionListBEl.addEventListener("click", function () {window.alert("You are incorrect!")}
+||optionListCEl.addEventListener("click", function () {window.alert("You are incorrect!")}
+||optionListDEl.addEventListener("click", function () {window.alert("You are incorrect!")};
+   
 
-questionArray = document.createElement("h2");
-questionArray.innerHTML='questionArray[i]';
-questionDisplay.appendChild(questionArray);
-}}
+
+    // questionDisplay.textContent = questionArray[0].p
+
+// optionItemEl = document.createElement("li");
+// optionItemEl.innerHTML = "<button>" + questionArray[0].a + "</button>";
+// optionSpot.appendChild(optionItemEl);
+
+// optionEl.textContent = questionArray[0].a
+// optionItemEl.appendChild(optionEl)
+// optionEl.textContent = questionArray[0].b
+// options.appendChild(optionEl)
+// optionEl.textContent = questionArray[0].c
+// options.appendChild(optionEl)
+// optionEl.textContent = questionArray[0].d
+// options.appendChild(optionEl)
+
+
+ // questionDisplay.textContent="";
+// console.log(questionArray)
+// for (var i=0; i < 1; i++){    
+// questionDisplay.setAttribute("h2", questionArray[i].q)
+// var buttonA = document.createElement("button");
+// buttonA.setAttribute()
+// var buttonB =document.createElement("button");
+// buttonB.setAttribute()
+// var buttonC =document.createElement("button");
+// buttonC.setAttribute()
+// var buttonD =document.createElement("button");
+// buttonD.setAttribute()
+// }
+}
+
 var countdown = function() {
+startButton = document.querySelector("#start")
+
     var scoreClockEl = document.getElementById("scoreClock")
     timer--;
     scoreClockEl.textContent=timer
-    console.log(timer)
+   // console.log(timer)
 }
 
 // condition where timer is lost by 10
@@ -41,7 +96,7 @@ wrongButton.addEventListener("click", function wrong () {
 
 if (timer <=0){
     console.log("Game Over")
-    clearInterval(startGame)
+    clearInterval(countdown)
 }
 
 var startGame=function(){
