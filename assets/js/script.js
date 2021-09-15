@@ -1,30 +1,56 @@
 // GIVEN I am taking a code quiz
 var timer = 108;
 var gameStartBtn = document.getElementById('start');
+var answerDisplay = document.getElementById('response')
+var questionDisplay = document.getElementById("question");
+questionDisplay.textContent="";
+
+// need to practice making a button
+// First you need to tag the id
+var buttonLocation = document.querySelector("#eventWindow");
+var wrongButton = document.createElement("button");
+wrongButton.textContent="Wrong-answer-button";
+wrongButton.setAttribute("type", "submit");
+buttonLocation.appendChild(wrongButton);
 
 
+var question = function () {
+questionArray= ["What is an apple?", "What is a carrot?"]   
 
+for (var i=0; i >= questionArray.length; i++){
 
+questionArray = document.createElement("h2");
+questionArray.innerHTML='questionArray[i]';
+questionDisplay.appendChild(questionArray);
+}}
 var countdown = function() {
     var scoreClockEl = document.getElementById("scoreClock")
     timer--;
     scoreClockEl.textContent=timer
     console.log(timer)
-//condition where timer is lost by 10
-    if (timer == 90){
-        timer= timer -10
-    }
-    if (timer ===0){
-        console.log("Game Over")
-        clearInterval(startGame)
-    }
+}
+
+// condition where timer is lost by 10
+//  OH silly ADD the nameOfTheButton.addeventlistener (It will listen to just that) 
+wrongButton.addEventListener("click", function wrong () {   
+ console.log(wrongButton)
+ console.dir(wrongButton)
+ timer= timer -10
+ answerDisplay.textContent="Wrong Answer"
+})
+
+if (timer <=0){
+    console.log("Game Over")
+    clearInterval(startGame)
 }
 
 var startGame=function(){
-    setInterval(countdown, 1000)
+    setInterval(countdown, 1000);
+    question()
 };
-console.log(gameStartBtn)
+
 gameStartBtn.onclick = startGame;
+
 
 
 //var counter = 10
