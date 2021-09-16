@@ -1,17 +1,9 @@
 // GIVEN I am taking a code quiz
 var timer = 108;
-var questionId=0
-var gameStartBtn = document.getElementById('start');
+var gameNewBtnEl = document.getElementById('eventWindow');
+gameNewBtnEl.innerHTML="<button id='start'>Start Button</button>";
 var answerDisplay = document.getElementById('response');
-var questionDisplay = document.getElementById("question");
 var optionSpot=document.getElementById("options")
-
-var optionEl = document.createElement("button")
-questionArray= [
-    {q: "What is an apple?", a: "fruit", b: "Bread", c: "Toy", d: "Candy"},
-    {q:"What is a carrot?", a:"vegetables"}
-    ]; 
-
 
 // need to practice making a button
 // First you need to tag the id
@@ -21,30 +13,55 @@ wrongButton.textContent="Wrong-answer-button";
 wrongButton.setAttribute("type", "submit");
 buttonLocation.appendChild(wrongButton);
 
+questionArray=[
+    { q:"what is an apple?", a: "fruit", b: "Bread", c: "Toy", d: "Candy"},
+    {q:"What is a carrot?", a:"vegetables", b: "Love", c: "Nature", d: "Lampost"},
+    {q:"This is a placeholder for question3", a:"Oh no", b:"This one", c:"Join in", d:"I messed up"},
+    {q:"I miss civ 5", a:"Not this one", b:"Yes this one", c:"Can I code", d:"Keep trying"},
+    {q:"This is the last question!", a:"No it's d", b:"I'm a d", c:"I've got no culture", d:"Click me" }
+]
 
-var question = function () {
-questionDisplay.textContent="What is an Apple?";
-optionListAEl = document.createElement("li");
-optionListBEl = document.createElement("li");
-optionListCEl = document.createElement("li");
-optionListDEl = document.createElement("li");
-optionListAEl.innerHTML="<button>Fruit</button>";
+
+
+var question = function (count) {
+var rank = count
+gameNewBtnEl.innerHTML="";
+questionArray= [
+    {q: "What is an apple?", a: "fruit", b: "Bread", c: "Toy", d: "Candy"},
+    {q:"What is a carrot?", a:"vegetables"}
+    ]; 
+var questionDisplay = document.getElementById("question");
+questionDisplay.textContent=questionArray[rank].q;
+// THis is KEY!!! OMG!
+var optionListAEl = document.createElement("li");
+var optionListBEl = document.createElement("li");
+var optionListCEl = document.createElement("li");
+var optionListDEl = document.createElement("li");
+optionListAEl.innerHTML="<button id='a'>Bum</button>";
 optionSpot.appendChild(optionListAEl);
-optionListBEl.innerHTML="<button>Bread</button>";
+optionListBEl.innerHTML="<button id='b'>Bread</button>";
 optionSpot.appendChild(optionListBEl);
-optionListCEl.innerHTML="<button>Toy</button>";
+optionListCEl.innerHTML="<button id='c'>Toy</button>";
 optionSpot.appendChild(optionListCEl);
-optionListDEl.innerHTML="<button>Candy</button>";
+optionListDEl.innerHTML="<button id='d'>Candy</button>";
 optionSpot.appendChild(optionListDEl);
 
-if (optionListAEl.addEventListener("click", function () {
-    window.alert("You got it correct!")}));
-if (optionListBEl.addEventListener("click", function () {window.alert("You are incorrect!")}
-||optionListCEl.addEventListener("click", function () {window.alert("You are incorrect!")}
-||optionListDEl.addEventListener("click", function () {window.alert("You are incorrect!")};
-   
+var gameButtonAEl=document.getElementById('a')
+var gameButtonBEl=document.getElementById('b')
+var gameButtonCEl=document.getElementById('c')
+var gameButtonDEl=document.getElementById('d')
 
 
+gameButtonAEl.addEventListener("click", test =function(){count++;return})
+gameButtonBEl.addEventListener("click", test =function(){count++;return})
+gameButtonCEl.addEventListener("click", test =function(){count++;return})
+gameButtonDEl.addEventListener("click", test =function(){count++;return})
+
+
+}
+var isThatYourFinalAnswer = function () {
+
+}
     // questionDisplay.textContent = questionArray[0].p
 
 // optionItemEl = document.createElement("li");
@@ -74,7 +91,7 @@ if (optionListBEl.addEventListener("click", function () {window.alert("You are i
 // var buttonD =document.createElement("button");
 // buttonD.setAttribute()
 // }
-}
+
 
 var countdown = function() {
 startButton = document.querySelector("#start")
@@ -101,10 +118,15 @@ if (timer <=0){
 
 var startGame=function(){
     setInterval(countdown, 1000);
-    question()
+var count = 0   
+for (var i=0;i >= 5; i++)    
+console.log(count)
+question(count)
+
+console.log(count)
 };
 
-gameStartBtn.onclick = startGame;
+start.onclick = startGame;
 
 
 
