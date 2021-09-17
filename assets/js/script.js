@@ -1,17 +1,8 @@
-// GIVEN I am taking a code quiz
 var timer = 108;
 var gameNewBtnEl = document.getElementById('eventWindow');
 gameNewBtnEl.innerHTML="<button id='start'>Start Button</button>";
-var answerDisplay = document.getElementById('response');
 var optionSpot=document.getElementById("options")
-
-// need to practice making a button
-// First you need to tag the id
 var buttonLocation = document.querySelector("#eventWindow");
-var wrongButton = document.createElement("button");
-wrongButton.textContent="Wrong-answer-button";
-wrongButton.setAttribute("type", "submit");
-buttonLocation.appendChild(wrongButton);
 var count = 0
 
 
@@ -20,10 +11,11 @@ gameNewBtnEl.innerHTML="";
 
 questionArray=[
     {q:"what is an apple?", a:"fruit", b:"b", c:"c", d:"d"},
-    {q:"What is a carrot?", a:"vegetable",b:"b", c:"c", d:"d"},
-    {q:"What is a steak?", a:"meat",b:"b", c:"c", d:"d"},
-    {q:"What is IceCream?", a:"treat",b:"b", c:"c", d:"d"},
-    {q:"What is bread?", a:"grain",b:"b", c:"c", d:"d"}];
+    {q:"What is a carrot?", a:"a",b:"b", c:"vegetable", d:"d"},{},
+    {q:"What is a steak?", a:"meat",b:"b", c:"c", d:"d"},{},{},{},
+    {q:"What is IceCream?", a:"a",b:"b", c:"c", d:"treat"},{},{},{},{},{},{},
+    {q:"What is bread?", a:"a",b:"grain", c:"c", d:"d"}];
+
 
 var questionDisplay = document.getElementById("question");
 questionDisplay.textContent=questionArray[count].q;
@@ -38,37 +30,37 @@ optionListBEl.innerHTML="<button>"+ questionArray[count].b +"</button>";
 optionListCEl.innerHTML="<button>"+ questionArray[count].c +"</button>";
 optionListDEl.innerHTML="<button>"+ questionArray[count].d +"</button>";
 
+optionListAEl.addEventListener("click", function () {
+console.log(count) 
+if (count === 0||count === 3){
+    count++;
+    question();
+} else {wrongAnswer()}
+});
 
-var gameButtonAEl = document.getElementById('a')
-// var gameButtonAEl=document.getElementById('a')
-// // var gameButtonBEl=document.getElementById('b')
-// // var gameButtonCEl=document.getElementById('c')
-// // var gameButtonDEl=document.getElementById('d')
-
-
-// gameButtonAEl.addEventListener("click", function() {count++; question()})
-// // gameButtonBEl.addEventListener("click", function() {count++; question()})
-// // gameButtonCEl.addEventListener("click", function() {count++; question()})
-// // gameButtonDEl.addEventListener("click", function() {count++; question()})
-// // console.log(count)
-
-}
-
-
-
- // questionDisplay.textContent="";
-// console.log(questionArray)
-// for (var i=0; i < 1; i++){    
-// questionDisplay.setAttribute("h2", questionArray[i].q)
-// var buttonA = document.createElement("button");
-// buttonA.setAttribute()
-// var buttonB =document.createElement("button");
-// buttonB.setAttribute()
-// var buttonC =document.createElement("button");
-// buttonC.setAttribute()
-// var buttonD =document.createElement("button");
-// buttonD.setAttribute()
-// }
+optionListBEl.addEventListener("click", function () {
+console.log(count) 
+if (count === 14){
+    count++;
+    alert("Gameover");
+} else {wrongAnswer()}
+});
+optionListCEl.addEventListener("click", function () {
+console.log(count) 
+if (count === 1){
+    count++;
+    question();
+} else {wrongAnswer()}
+});  
+    
+optionListDEl.addEventListener("click", function () {
+console.log(count) 
+if (count === 7){
+    count++;
+    question();
+} else {wrongAnswer()}
+});
+} 
 
 
 var countdown = function() {
@@ -77,19 +69,22 @@ startButton = document.querySelector("#start")
     var scoreClockEl = document.getElementById("scoreClock")
     timer--;
     scoreClockEl.textContent=timer
-   // console.log(timer)
+   
 }
 
-// condition where timer is lost by 10
-//  OH silly ADD the nameOfTheButton.addeventlistener (It will listen to just that) 
-wrongButton.addEventListener("click", function wrong () {   
- console.log(wrongButton)
- console.dir(wrongButton)
- timer= timer -10
- answerDisplay.textContent="Wrong Answer"
-})
+wrongAnswer = function() { 
+// wrongAnswerDisplay = 5     
+timer= timer -10
 
-if (timer <=0){
+var answerDisplay = document.getElementById('eventWindow');
+answerDisplay.textContent="Wrong Answer";
+answerDisplay.setAttribute("style", "color:var(--secondary-colour");
+//wrongAnswerDisplay--;
+count++;
+question();
+}
+
+if (timer ==0){
     console.log("Game Over")
     clearInterval(countdown)
 }
@@ -112,7 +107,6 @@ optionSpot.appendChild(optionListBEl);
 optionSpot.appendChild(optionListCEl);
 optionSpot.appendChild(optionListDEl);
 question()
-
 };
 
 start.onclick = startGame;

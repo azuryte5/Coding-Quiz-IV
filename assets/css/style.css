@@ -74,7 +74,9 @@ section {
 section p {
     font-size: 12px;
 }
-
+.gameshow p {
+    color: var(--secondary-colour);
+}
 .Gameshow {
     border: 3px dashed var(--tertairy-colour);
     display: flex;
