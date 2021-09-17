@@ -12,70 +12,48 @@ var wrongButton = document.createElement("button");
 wrongButton.textContent="Wrong-answer-button";
 wrongButton.setAttribute("type", "submit");
 buttonLocation.appendChild(wrongButton);
+var count = 0
+
+
+var question = function () {
+gameNewBtnEl.innerHTML="";
 
 questionArray=[
-    { q:"what is an apple?", a: "fruit", b: "Bread", c: "Toy", d: "Candy"},
-    {q:"What is a carrot?", a:"vegetables", b: "Love", c: "Nature", d: "Lampost"},
-    {q:"This is a placeholder for question3", a:"Oh no", b:"This one", c:"Join in", d:"I messed up"},
-    {q:"I miss civ 5", a:"Not this one", b:"Yes this one", c:"Can I code", d:"Keep trying"},
-    {q:"This is the last question!", a:"No it's d", b:"I'm a d", c:"I've got no culture", d:"Click me" }
-]
+    {q:"what is an apple?", a:"fruit", b:"b", c:"c", d:"d"},
+    {q:"What is a carrot?", a:"vegetable",b:"b", c:"c", d:"d"},
+    {q:"What is a steak?", a:"meat",b:"b", c:"c", d:"d"},
+    {q:"What is IceCream?", a:"treat",b:"b", c:"c", d:"d"},
+    {q:"What is bread?", a:"grain",b:"b", c:"c", d:"d"}];
 
-
-
-var question = function (count) {
-var rank = count
-gameNewBtnEl.innerHTML="";
-questionArray= [
-    {q: "What is an apple?", a: "fruit", b: "Bread", c: "Toy", d: "Candy"},
-    {q:"What is a carrot?", a:"vegetables"}
-    ]; 
 var questionDisplay = document.getElementById("question");
-questionDisplay.textContent=questionArray[rank].q;
-// THis is KEY!!! OMG!
-var optionListAEl = document.createElement("li");
-var optionListBEl = document.createElement("li");
-var optionListCEl = document.createElement("li");
-var optionListDEl = document.createElement("li");
-optionListAEl.innerHTML="<button id='a'>Bum</button>";
-optionSpot.appendChild(optionListAEl);
-optionListBEl.innerHTML="<button id='b'>Bread</button>";
-optionSpot.appendChild(optionListBEl);
-optionListCEl.innerHTML="<button id='c'>Toy</button>";
-optionSpot.appendChild(optionListCEl);
-optionListDEl.innerHTML="<button id='d'>Candy</button>";
-optionSpot.appendChild(optionListDEl);
+questionDisplay.textContent=questionArray[count].q;
 
-var gameButtonAEl=document.getElementById('a')
-var gameButtonBEl=document.getElementById('b')
-var gameButtonCEl=document.getElementById('c')
-var gameButtonDEl=document.getElementById('d')
+var optionListAEl = document.getElementById("a")
+var optionListBEl = document.getElementById("b")
+var optionListCEl = document.getElementById("c")
+var optionListDEl = document.getElementById("d")
+
+optionListAEl.innerHTML="<button>"+ questionArray[count].a +"</button>";
+optionListBEl.innerHTML="<button>"+ questionArray[count].b +"</button>";
+optionListCEl.innerHTML="<button>"+ questionArray[count].c +"</button>";
+optionListDEl.innerHTML="<button>"+ questionArray[count].d +"</button>";
 
 
-gameButtonAEl.addEventListener("click", test =function(){count++;return})
-gameButtonBEl.addEventListener("click", test =function(){count++;return})
-gameButtonCEl.addEventListener("click", test =function(){count++;return})
-gameButtonDEl.addEventListener("click", test =function(){count++;return})
+var gameButtonAEl = document.getElementById('a')
+// var gameButtonAEl=document.getElementById('a')
+// // var gameButtonBEl=document.getElementById('b')
+// // var gameButtonCEl=document.getElementById('c')
+// // var gameButtonDEl=document.getElementById('d')
 
 
-}
-var isThatYourFinalAnswer = function () {
+// gameButtonAEl.addEventListener("click", function() {count++; question()})
+// // gameButtonBEl.addEventListener("click", function() {count++; question()})
+// // gameButtonCEl.addEventListener("click", function() {count++; question()})
+// // gameButtonDEl.addEventListener("click", function() {count++; question()})
+// // console.log(count)
 
 }
-    // questionDisplay.textContent = questionArray[0].p
 
-// optionItemEl = document.createElement("li");
-// optionItemEl.innerHTML = "<button>" + questionArray[0].a + "</button>";
-// optionSpot.appendChild(optionItemEl);
-
-// optionEl.textContent = questionArray[0].a
-// optionItemEl.appendChild(optionEl)
-// optionEl.textContent = questionArray[0].b
-// options.appendChild(optionEl)
-// optionEl.textContent = questionArray[0].c
-// options.appendChild(optionEl)
-// optionEl.textContent = questionArray[0].d
-// options.appendChild(optionEl)
 
 
  // questionDisplay.textContent="";
@@ -117,13 +95,24 @@ if (timer <=0){
 }
 
 var startGame=function(){
-    setInterval(countdown, 1000);
-var count = 0   
-for (var i=0;i >= 5; i++)    
-console.log(count)
-question(count)
+setInterval(countdown, 1000);
 
-console.log(count)
+var optionListAEl = document.createElement("li");
+var optionListBEl = document.createElement("li");
+var optionListCEl = document.createElement("li");
+var optionListDEl = document.createElement("li");
+
+optionListAEl.setAttribute("id", "a")
+optionListBEl.setAttribute("id", "b")
+optionListCEl.setAttribute("id", "c")
+optionListDEl.setAttribute("id", "d")
+
+optionSpot.appendChild(optionListAEl);
+optionSpot.appendChild(optionListBEl);
+optionSpot.appendChild(optionListCEl);
+optionSpot.appendChild(optionListDEl);
+question()
+
 };
 
 start.onclick = startGame;
