@@ -33,33 +33,58 @@ optionListDEl.innerHTML="<button>"+ questionArray[count].d +"</button>";
 
 
 optionListAEl.onclick = function (){
-    if (count === 1|| count === 3 || count === 4){
+    if (count === 1|| count === 3){
     wrongAnswer()}    
     console.log(count); question()
+
+    if (count === 4){timer= timer -10, endGame()}
 }
 optionListBEl.onclick = function (){
     if (count === 0|| count === 1 || count === 2|| count === 3){
-        wrongAnswer()}    
+    wrongAnswer()}    
     console.log(count); question()
+
+    if (count === 4){endGame()}
 }
 optionListCEl.onclick = function (){
-    if (count === 0|| count === 2 || count === 3|| count === 4){
-        wrongAnswer()}    
+    if (count === 0|| count === 2 || count === 3){
+    wrongAnswer()}    
     console.log(count); question()
+
+    if (count === 4){timer= timer -10, endGame()}
 }
 optionListDEl.onclick = function (){
-    if (count === 0|| count === 1 || count === 2 || count == 3){
-        wrongAnswer()}    
+    if (count === 0|| count === 1 || count === 2){
+    wrongAnswer()}    
     console.log(count); question()
+
+    if (count === 4){timer= timer -10, endGame()}
+
 }}
+
+var endGame = function() {
+
+endScreenEl = document.getElementById("question");
+endScreenEl.textContent = "Your final score was " + timer;
+var playerNameForm = document.createElement("form");
+var playerNameLabel = document.createElement("label");
+var playerNameInput = document.createElement("input");
+var playerNameSubmit = document.createElement("input");
+  playerNameForm.appendChild(playerNameLabel);
+  playerNameForm.appendChild(playerNameInput);
+  playerNameForm.appendChild(playerNameSubmit);
+  document.getElementById("question").appendChild(playerNameForm);
+}
+
 
 wrongAnswer = function() {    
 timer = timer -10
-var answerDisplay = document.getElementById('eventWindow');
-answerDisplay.textContent="Wrong Answer";
-console.log(answerDisplay);
-answerDisplay.setAttribute("style", "color:var(--secondary-colour");
-//wrongAnswerDisplay--;
+var answerDisplayEl = document.getElementById('eventWindow');
+var onscreenEl = document.createElement("h2");
+answerDisplayEl.appendChild(onscreenEl)
+onscreenEl.textContent="Wrong answer";
+onscreenEl.setAttribute("style", "color:var(--secondary-colour");
+//wrongAnswerDisplay, Not displaying but it is running;
 }
 
 var startGame=function(){
@@ -81,7 +106,7 @@ optionSpot.appendChild(optionListCEl);
 optionSpot.appendChild(optionListDEl);
 question()
 
-if (timer >= 0) {
+if (timer >= 1) {
     clearInterval(countdown)
 }
 };
@@ -90,7 +115,7 @@ start.onclick = startGame;
 
 
 function countdown(){
-   if (timer >1) {
+   if (timer >= 0) {
       scoreClock.textContent ='You have ' + timer + ' second(s) left';
       timer--;}
     else {
