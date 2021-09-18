@@ -36,7 +36,6 @@ var question = function () {
     optionListBEl.remove();
     optionListCEl.remove();
     optionListDEl.remove();
-    endGame();
     return;
   }
 
@@ -71,10 +70,7 @@ var question = function () {
 };
 
 var endGame = function () {
-  //var hideScoreEl = document.getElementById("toBeHidden");
-  //hideScoreEl.textContent = "";
-  //hideScoreEl.setAttribute("style", "color:var(--secondary-colour");
-  endScreenEl = document.getElementById("endScreen");
+  endScreenEl = document.getElementById("question");
   endScreenEl.textContent = "Your final score was " + timer;
   var playerNameForm = document.createElement("form");
   var playerNameLabel = document.createElement("h2");
@@ -101,12 +97,31 @@ var endGame = function () {
 };
 
 var highScore = function () {
-var nextPage=document.getElementById("endScreen");
-nextPage.innerHTML=" ";
-var hsTitle=document.createElement("h2");
-hsTitle.textContent="High Score";
-nextPage.appendChild(hsTitle);
-}
+  var nextPage = document.getElementById("question");
+  nextPage.innerHTML = "High Score";
+  // var hsTitle=document.createElement("h2");
+  // hsTitle.textContent="High Score";
+  // nextPage.appendChild(hsTitle);
+
+  var name = localStorage.getItem("initials");
+  var score = localStorage.getItem("score");
+  var listItemEl = document.createElement("li");
+  listItemEl.textContent = name + " score of " + score;
+  listItemEl.setAttribute("id", "scoreBoard")
+  options.appendChild(listItemEl);
+  var insertToken = document.getElementById("eventWindow");
+  var quarter = document.createElement("button");
+  quarter.setAttribute("id", "playerReady")
+  quarter.textContent = "Try Again";
+  insertToken.appendChild(quarter);
+  playerReady.addEventListener("click", function () {
+  var hideScore=document.getElementById("scoreBoard");  
+    timer = 100;
+    count = -1;
+    hideScore.remove();
+    startGame();
+  });
+};
 
 wrongAnswer = function () {
   timer = timer - 10;
@@ -119,6 +134,7 @@ wrongAnswer = function () {
 };
 
 var startGame = function () {
+var optionSpot = document.getElementById("options")
   var optionListAEl = document.createElement("li");
   var optionListBEl = document.createElement("li");
   var optionListCEl = document.createElement("li");
@@ -142,6 +158,7 @@ var countdown = function () {
     console.log(count);
     if (count > 4 || timer <= 0) {
       clearInterval(clock);
+      endGame();
       return;
     }
     if (timer >= 1) {
