@@ -107,34 +107,55 @@ var highScore = function () {
   var score = localStorage.getItem("score");
   var listItemEl = document.createElement("li");
   listItemEl.textContent = name + " score of " + score;
-  listItemEl.setAttribute("id", "scoreBoard")
+  listItemEl.setAttribute("id", "scoreBoard");
   options.appendChild(listItemEl);
+
   var insertToken = document.getElementById("eventWindow");
   var quarter = document.createElement("button");
-  quarter.setAttribute("id", "playerReady")
+  quarter.setAttribute("id", "playerReady");
   quarter.textContent = "Try Again";
   insertToken.appendChild(quarter);
   playerReady.addEventListener("click", function () {
-  var hideScore=document.getElementById("scoreBoard");  
+    var hideScore = document.getElementById("scoreBoard");
     timer = 100;
     count = -1;
-    hideScore.remove();
     startGame();
+  });
+
+  var reset = document.createElement("button");
+  reset.innerHTML = "<button id='resetScore'>Reset Scores</button>";
+  insertToken.appendChild(reset);
+  reset.addEventListener("click", function () {
+    var deleted = document.querySelector("#scoreBoard");
+    deleted.remove();
   });
 };
 
 wrongAnswer = function () {
   timer = timer - 10;
-  var answerDisplayEl = document.getElementById("eventWindow");
-  var onscreenEl = document.createElement("h2");
-  onscreenEl.textContent = "Wrong answer";
-  onscreenEl.setAttribute("style", "color:var(--secondary-colour");
-  answerDisplayEl.appendChild(onscreenEl);
-  //wrongAnswerDisplay, Not displaying but it is running;
+  shotClock = 1;
+
+  wrong = setInterval(function () {
+    if (shotClock <= 0) {
+      clearInterval(wrong);
+      return;
+    }
+    var answerDisplayEl = document.getElementById("eventWindow");
+    var onscreenEl = document.createElement("h3");
+    onscreenEl.textContent = "Wrong answer";
+    onscreenEl.setAttribute("style", "color:var(--secondary-colour");
+    onscreenEl.setAttribute("id", "wrongSign");
+    answerDisplayEl.appendChild(onscreenEl);
+    shotClock--;
+
+    setTimeout(function () {
+      onscreenEl.remove();
+    }, 1000);
+  }, 1000);
 };
 
 var startGame = function () {
-var optionSpot = document.getElementById("options")
+  var optionSpot = document.getElementById("options");
   var optionListAEl = document.createElement("li");
   var optionListBEl = document.createElement("li");
   var optionListCEl = document.createElement("li");
@@ -155,6 +176,7 @@ var optionSpot = document.getElementById("options")
 
 var countdown = function () {
   var clock = setInterval(function () {
+    var scoreClock = document.getElementById("scoreClock");
     console.log(count);
     if (count > 4 || timer <= 0) {
       clearInterval(clock);
@@ -163,10 +185,13 @@ var countdown = function () {
     }
     if (timer >= 1) {
       timer--;
-      var scoreClock = document.getElementById("scoreClock");
       scoreClock.textContent = "You have " + timer + " second(s) left";
     }
   }, 1000);
 };
 start.onclick = startGame;
-hideScoreEl.onclick = highScore;
+hideScoreEl.onclick = function () {
+  // var scoreIssue = document.getElementById("scoreBoard");
+  // scoreBoard.removeChild(scoreIssue.lastElementChild);
+  highScore();
+};
