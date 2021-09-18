@@ -97,3 +97,8 @@ section p {
 .Gameshow button:hover {
     background-color: var(--secondary-colour);
 }
+
+.viewHS:hover{
+    background-color: var(--secondary-colour);
+    
+}

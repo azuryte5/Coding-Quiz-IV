@@ -1,6 +1,6 @@
 # assignment4-quiz
-I need to build a quiz that has a start <button> (Function to begin game starts)
-When I press start the game begins (on click,start game)
+* I need to build a quiz that has a start <button> (Function to begin game starts)
+* When I press start the game begins (on click,start game)
 A timer starts and begins ticking down (Function with interval)
 First question is displayed and I am given four possible answers. 1 is correct and proceeds no penalty (cycle question Function)
 hover elements show up, when an option selected is wrong or right answer appears
