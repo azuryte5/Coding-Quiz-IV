@@ -18,9 +18,9 @@ SO THAT I can gauge my progress compared to my peers
 
 * 2) startGame () set ups the section display with the possible answers lists, runs countdown () and questions ()
 
-* 3a) countdown () is a clock and holds the timer/score. It has 3 stopping conditions as described in comments. When game ends setInterval is cleared and endGame() runs
+* 3) a) countdown () is a clock and holds the timer/score. It has 3 stopping conditions as described in comments. When game ends setInterval is cleared and endGame() runs
 
-* 3b) questions() uses var count to know which question to display and when it is out of questions and has to end. After an answer is given by user, the next question() is fired and runs with count++. If count hits the end it stops and goes to endGame()
+* 3) b) questions() uses var count to know which question to display and when it is out of questions and has to end. After an answer is given by user, the next question() is fired and runs with count++. If count hits the end it stops and goes to endGame()
 
 * 4) wrongAnswer() or rightAnswer () function will run when an answer is given passed on the count gate I made based on where count was when an answer button was clicked.
 
