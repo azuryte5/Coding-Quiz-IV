@@ -247,7 +247,7 @@ var startGame = function () {
   countdown();
   question();
 };
-// Clock for timer. It has two stopping conditions. 1) when count is more than four 2) when timer hits 0  This was a huge challenge. I kept making new countdowns instead of stopping the 1st one that was running.
+// Clock for timer. It has two stopping conditions. 1) when count is more than four 2) when timer hits 0 3) when viewhighscore is pressed This was a huge challenge. I kept making new countdowns instead of stopping the 1st one that was running.
 var countdown = function () {
   var clock = setInterval(function () {
     var scoreClock = document.getElementById("scoreClock");
