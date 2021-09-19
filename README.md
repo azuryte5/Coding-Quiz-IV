@@ -3,14 +3,17 @@ Link to Github Application:https://azuryte5.github.io/assignment4-quiz/
 
 Link to Github Repository: https://github.com/azuryte5/assignment4-quiz
 
-<img src="../assets/images/screenshot-.png" alt="image of question 1 from quiz" width="500" style="max-width: 100%;">
-
-![](images/Screenshot-4.png)
+<img src="assets/images/Screenshot-4.png" alt="image of question 1 from quiz" width="500" style="max-width: 100%;">
 
 ## User Story
 AS A coding boot camp student
 I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
 SO THAT I can gauge my progress compared to my peers
+
+Spent 30hrs on this assignment. I struggled to come up with a way to trace answers and progress through quiz on display.
+I came up with a working solution that uses var count to track which question the user is on and when to stop and move to endgame screen.
+
+
 
 
 ## Acceptance Criteria
