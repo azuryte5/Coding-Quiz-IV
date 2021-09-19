@@ -72,6 +72,8 @@ var question = function () {
   optionListAEl.onclick = function () {
     if (count === 1 || count === 3 || count === 4) {
       wrongAnswer();
+    } else {
+      rightAnswer();
     }
     console.log(count);
     question();
@@ -79,6 +81,8 @@ var question = function () {
   optionListBEl.onclick = function () {
     if (count === 0 || count === 1 || count === 2 || count === 3) {
       wrongAnswer();
+    } else {
+      rightAnswer();
     }
     console.log(count);
     question();
@@ -86,6 +90,8 @@ var question = function () {
   optionListCEl.onclick = function () {
     if (count === 0 || count === 2 || count === 3 || count === 4) {
       wrongAnswer();
+    } else {
+      rightAnswer();
     }
     console.log(count);
     question();
@@ -93,7 +99,10 @@ var question = function () {
   optionListDEl.onclick = function () {
     if (count === 0 || count === 1 || count === 2 || count === 4) {
       wrongAnswer();
+    } else {
+      rightAnswer();
     }
+
     console.log(count);
     question();
   };
@@ -129,9 +138,6 @@ var endGame = function () {
 var highScore = function () {
   var nextPage = document.getElementById("question");
   nextPage.innerHTML = "High Score";
-  // var hsTitle=document.createElement("h2");
-  // hsTitle.textContent="High Score";
-  // nextPage.appendChild(hsTitle);
 
   var name = localStorage.getItem("initials");
   var score = localStorage.getItem("score");
@@ -146,7 +152,6 @@ var highScore = function () {
   quarter.textContent = "Try Again";
   insertToken.appendChild(quarter);
   playerReady.addEventListener("click", function () {
-    var hideScore = document.getElementById("scoreBoard");
     timer = 100;
     count = -1;
     startGame();
@@ -156,8 +161,8 @@ var highScore = function () {
   reset.innerHTML = "<button id='resetScore'>Reset Scores</button>";
   insertToken.appendChild(reset);
   reset.addEventListener("click", function () {
-    var deleted = document.querySelector("#scoreBoard");
-    deleted.remove();
+    var deleted = document.getElementById("options");
+    deleted.innerHTML = " ";
   });
 };
 
@@ -173,6 +178,28 @@ wrongAnswer = function () {
     var answerDisplayEl = document.getElementById("eventWindow");
     var onscreenEl = document.createElement("h3");
     onscreenEl.textContent = "Wrong answer";
+    onscreenEl.setAttribute("style", "color:var(--secondary-colour");
+    onscreenEl.setAttribute("id", "wrongSign");
+    answerDisplayEl.appendChild(onscreenEl);
+    shotClock--;
+
+    setTimeout(function () {
+      onscreenEl.remove();
+    }, 1000);
+  }, 1000);
+};
+
+rightAnswer = function () {
+  shotClock = 1;
+
+  wrong = setInterval(function () {
+    if (shotClock <= 0) {
+      clearInterval(wrong);
+      return;
+    }
+    var answerDisplayEl = document.getElementById("eventWindow");
+    var onscreenEl = document.createElement("h3");
+    onscreenEl.textContent = "Correct answer";
     onscreenEl.setAttribute("style", "color:var(--secondary-colour");
     onscreenEl.setAttribute("id", "wrongSign");
     answerDisplayEl.appendChild(onscreenEl);
@@ -221,7 +248,5 @@ var countdown = function () {
 };
 start.onclick = startGame;
 hideScoreEl.onclick = function () {
-  // var scoreIssue = document.getElementById("scoreBoard");
-  // scoreBoard.removeChild(scoreIssue.lastElementChild);
   highScore();
 };
