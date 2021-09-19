@@ -10,11 +10,41 @@ var question = function () {
   gameNewBtnEl.innerHTML = "";
   count++;
   questionArray = [
-    { q: "what is an apple?", a: "fruit", b: "b", c: "c", d: "d" },
-    { q: "What is a carrot?", a: "a", b: "b", c: "vegetable", d: "d" },
-    { q: "What is a steak?", a: "meat", b: "b", c: "c", d: "d" },
-    { q: "What is IceCream?", a: "a", b: "b", c: "c", d: "treat" },
-    { q: "What is bread?", a: "a", b: "grain", c: "c", d: "d" },
+    {
+      q: "In the Box Model, where is the area where content is displayed?",
+      a: "Content box",
+      b: "Padding box",
+      c: "Border box",
+      d: "Margin box",
+    },
+    {
+      q: "Which justify-content property value is being described? -items are evenly distributed in the line with equal space around them. Note that visually the spaces aren’t equal, since all the items have equal space on both sides. The first item will have one unit of space against the container edge, but two units of space between the next item because that next item has its own spacing that applies.",
+      a: "Center",
+      b: "Space-between",
+      c: "Space-around",
+      d: "Space-evenly",
+    },
+    {
+      q: "Which Java Script Comparison Operator means not equal value or not equal type?",
+      a: "!==",
+      b: "==",
+      c: "===",
+      d: "!=",
+    },
+    {
+      q: "var fruit = ['banana', 'apple', 'avocado', 'mango', 'orange', 'grape'] Which one is fruit[4]?",
+      a: "avocado",
+      b: "grape",
+      c: "mango",
+      d: "orange",
+    },
+    {
+      q: "DOM stands for?",
+      a: "Direction Output Mobile",
+      b: "Document Object Model",
+      c: "Directory Object Module",
+      d: "Development Mockup",
+    },
     {},
   ];
 
