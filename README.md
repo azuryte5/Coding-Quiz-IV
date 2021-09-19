@@ -1,4 +1,4 @@
-# assignment4-quiz
+# Coding-Quiz-IV
 Link to Github Application:https://azuryte5.github.io/assignment4-quiz/
 
 Link to Github Repository: https://github.com/azuryte5/assignment4-quiz
